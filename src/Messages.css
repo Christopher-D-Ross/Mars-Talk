@@ -14,15 +14,50 @@
 .message-grid {
     display: grid;
     grid-template-columns: 1fr 3fr;
-    width: 70vw;
-    border: 1px solid red;
+    height: 35.60em;
+    width: 70em;
     gap: 2em;
 }
 
-.names-box {
-    border: 1px solid red;
+#dm-title {
+    display: block;
+    width: 50em;
 }
 
 .messages-box {
-    border: 1px solid red;
+    background: linear-gradient(to bottom right, var(--main-grey), black);
+    border-radius: 10px;
+}
+
+.direct-box {
+    height: 17.74em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(to bottom right, var(--mars-orange), rgb(68, 66, 66));
+    border-radius: 10px;
+    margin-bottom: 1em;
+}
+
+.group-box {
+    height: 17.74em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(to bottom right, var(--mars-orange), rgb(68, 66, 66));
+    border-radius: 10px;
+}
+
+.name-box {
+    height: 2.5em;
+    width: 10em;
+    font-size: 1.2em;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom right, var(--main-grey), black);
+    border-radius: 10px;
 }
