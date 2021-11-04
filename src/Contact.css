@@ -1,0 +1,131 @@
+#root {
+    margin: 0;
+    padding: 0;
+    --mars-orange: rgb(194, 94, 47);
+    --main-grey: rgba(119, 136, 153, .80);
+}
+
+.add-contact-box {
+    display: flex;
+    justify-content: center;
+    width: 40vw;
+}
+
+.add-contact-box button {
+    height: 2.5em;
+    width: 10em;
+    font-size: 1.2em;
+    border: none;
+    background: linear-gradient(to bottom right, rgb(131, 86, 131), rgb(68, 66, 66));
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 1em;
+}
+
+
+.contact-container {
+    width: 60vw;
+    height: 10vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(to bottom right, var(--mars-orange), rgb(48, 46, 46));
+    border-radius: 10px;
+    margin-bottom: 1em;
+}
+
+.info {
+    height: 3.5em;
+    width: 12em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom right, black, var(--main-grey));
+    color: var(--mars-orange);
+    border-radius: 10px;
+    font-size: 1.2em;
+}
+
+.message-button button {
+    height: 2.5em;
+    width: 10em;
+    font-size: 1.2em;
+    border: none;
+    background: linear-gradient(to bottom right, rgb(131, 86, 131), rgb(68, 66, 66));
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.contact-page-container {
+    position: absolute;
+}
+
+.contact-modal {
+    height: 1000px;
+    width: 1440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .60);
+    position: relative;
+    bottom: 710px;
+    display: none;
+}
+
+.contact-modal-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: url('mars-con.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+  
+.contact-modal h2 {
+    font-size: 2.5em;
+    letter-spacing: 1.2px;
+    color: black;
+}
+  
+.contact-modal button {
+    height: 40px;
+    width: 150px;
+    margin-top: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.contact-modal-box {
+    height: 60vh;
+    width: 40vw;
+    background-color: white;
+}
+
+.contact-modal-box input {
+    height: 2.25em;
+    width: 12.5em;
+    border-radius: 10px;
+    border: none;
+}
+
+.contact-modal-box button {
+    background: linear-gradient(to bottom right, rgb(131, 86, 131), rgb(68, 66, 66));
+    border-radius: 10px;
+    border: none;
+}
+
+.contact-x {
+    position: relative;
+    bottom: 130px;
+    left: 260px;
+}
+
+.contact-closer {
+    cursor: pointer;
+    font-weight: 900;
+}

@@ -1,0 +1,44 @@
+#root {
+    margin: 0;
+    padding: 0;
+    --mars-orange: rgb(194, 94, 47);
+    --main-grey: rgba(119, 136, 153, .80);
+}
+
+.tm-container {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.25em;
+}
+
+.tm-h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.375em;
+    width: 10.50em;
+    font-size: 2.5em;
+    color:var(--mars-orange);
+    background: linear-gradient(to bottom right, black, var(--main-grey));
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+.iconbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 190px;
+    width: 90px;
+    background: linear-gradient(to bottom right, var(--main-grey), rgb(48, 46, 46));
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.iconbox img {
+    height: 40px;
+    width: 70px;
+    cursor: pointer;
+}

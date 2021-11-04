@@ -1,0 +1,28 @@
+#root {
+    margin: 0;
+    padding: 0;
+    --mars-orange: rgb(194, 94, 47);
+    --main-grey: rgba(119, 136, 153, .80);
+}
+
+.message-grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    width: 70vw;
+    border: 1px solid red;
+    gap: 2em;
+}
+
+.names-box {
+    border: 1px solid red;
+}
+
+.messages-box {
+    border: 1px solid red;
+}

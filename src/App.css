@@ -1,0 +1,197 @@
+*,   
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Strait', sans-serif;
+}
+
+#root {
+  margin: 0;
+  padding: 0;
+  --mars-orange: rgb(194, 94, 47);
+  --main-grey: rgba(119, 136, 153, .80);
+}
+
+.land-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titlebox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background: linear-gradient(to bottom right, var(--main-grey), rgb(68, 66, 66));
+  border-radius: 10px;
+}
+
+.landtitle h1 {
+  font-size: 8.5em;
+}
+
+.talk {
+  font-size: .2em;
+}
+
+.marsbox {
+  border-radius: 10px;
+}
+
+.marsbox img {
+  height: 410px;
+  width: 640px;
+  border-radius: 10px;
+}
+
+.buttons {
+  display: flex;
+}
+
+.buttons button {
+  height: 65px;
+  width: 200px;
+  font-size: 30px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.signin {
+  background: linear-gradient(to bottom right, var(--mars-orange), rgb(48, 46, 46));
+  border: none;
+  border-radius: 10px;
+}
+.create {
+  background: linear-gradient(to bottom right, black, rgb(70, 67, 67));
+  color: var(--mars-orange);
+  border: none;
+  border-radius: 10px;
+}
+
+.topgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 50vh;
+  width: 90vw;
+  margin: 2em;
+  gap: 10px;
+}
+
+.bottomgrid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  gap: 10px;
+  height: 30vh;
+  width: 90vw;
+}
+
+.satellitebox {
+  border-radius: 10px;
+}
+
+.satellitebox img {
+  height: 310px;
+  border-radius: 10px;
+}
+
+.keyboardbox {
+  border-radius: 10px;
+  border: 10px dashed black;
+}
+
+.keyboardbox img {
+  height: 300px;
+  width: 400px;
+}
+
+.descriptionbox {
+  background: linear-gradient(to bottom right, var(--mars-orange), rgb(68, 66, 66));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.descriptionbox h2 {
+  text-align: center;
+  font-size: 3.5em;
+}
+
+.descriptionbox p {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+img {
+  height: 200px;
+  width: 300px;
+}
+
+.modal {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, .60);
+  position: absolute;
+  display: none;
+}
+
+.modal h2 {
+  font-size: 2.5em;
+  letter-spacing: 1.2px;
+  color: var(--main-grey);
+}
+
+.modal button {
+  height: 40px;
+  width: 150px;
+  margin-top: 10px;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.signinbox {
+  height: 60vh;
+  width: 40vw;
+  background: url("/src/mars.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center; 
+  border-radius: 10px; 
+}
+
+.signinbox button {
+  margin-bottom: 3em;
+  background: linear-gradient(to bottom right, rgb(131, 86, 131), rgb(68, 66, 66));
+  border-radius: 10px;
+  border: none;
+}
+
+.signinbox input {
+  height: 2.25em;
+  width: 12.5em;
+  border-radius: 10px;
+  border: none;
+}
+
+.thex {
+  position: relative;
+  bottom: 180px;
+  left: 260px;
+  font-size: 20px;
+}
+
+.closer {
+  cursor: pointer;
+  color: white;
+  font-weight: 900;
+}

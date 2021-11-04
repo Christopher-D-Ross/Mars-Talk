@@ -1,0 +1,53 @@
+#root {
+    margin: 0;
+    padding: 0;
+    --mars-orange: rgb(194, 94, 47);
+    --main-grey: rgba(119, 136, 153, .80);
+  }
+
+.dashblock {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 24.75em;
+    width: 20.5em;
+    background: linear-gradient(to bottom right, var(--mars-orange), rgb(48, 46, 46));
+    border-radius: 10px;
+}
+
+.dashtext {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 200px;
+    background: linear-gradient(to bottom right, black, var(--main-grey));    
+    color: var(--mars-orange);
+    border-radius: 10px;
+}
+
+.dashnumber {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10em;
+    width: 15em;
+    background: linear-gradient(to bottom right, var(--main-grey), rgb(54, 53, 53));
+    border-radius: 10px;
+}
+
+.dashnumber h1 {
+    font-size: 5em;
+}
+
+.dashphrase h2 {
+    font-size: 3.75em;
+}
+
+.dashboard-container {
+    height: 100vh;
+    /* background: url("/src/space.gif"); */
+}
+
