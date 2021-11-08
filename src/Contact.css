@@ -59,11 +59,13 @@
 }
 
 .contact-page-container {
+    height: 100vh;
     position: absolute;
+    background: url("mars-bg.jpg");
 }
 
 .contact-modal {
-    height: 1000px;
+    height: 105vh;
     width: 1440px;
     display: flex;
     flex-direction: column;

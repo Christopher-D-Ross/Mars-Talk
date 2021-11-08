@@ -9,7 +9,7 @@
     width: 100vw;
     display: flex;
     justify-content: space-between;
-    margin-top: 1.25em;
+    padding-top: 1.25em;
 }
 
 .tm-h1 {
@@ -19,8 +19,10 @@
     height: 2.375em;
     width: 10.50em;
     font-size: 2.5em;
-    color:var(--mars-orange);
-    background: linear-gradient(to bottom right, black, var(--main-grey));
+    color: rgba(194, 94, 47, .65);
+    /* background: linear-gradient(to bottom right, black, var(--main-grey)); */
+    background: url("moon-back.jpg");
+    background-size: cover;
     border-radius: 10px;
     margin-left: 20px;
 }
@@ -32,7 +34,11 @@
     align-items: center;
     height: 190px;
     width: 90px;
-    background: linear-gradient(to bottom right, var(--main-grey), rgb(48, 46, 46));
+    /* background: linear-gradient(to bottom right, var(--main-grey), rgb(48, 46, 46)); */
+    /* background: url("black-rock.jpg"); */
+    background: rgba(0, 0, 0, .15);
+    background-repeat: no-repeat;
+    background-size: cover;
     border-radius: 10px;
     margin-right: 20px;
 }
@@ -41,4 +47,30 @@
     height: 40px;
     width: 70px;
     cursor: pointer;
+}
+
+.tm-h1 {
+    position: relative;
+    animation: inright;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes inright {
+    0%   {left: 1500px}
+    100% {left: 0px}
+}
+
+.iconbox {
+    position: relative;
+    animation: upfromdown;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes upfromdown {
+    0%   {top: 1000px}
+    100% {top: 0px}
 }

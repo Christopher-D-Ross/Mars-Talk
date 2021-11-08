@@ -17,7 +17,19 @@ export class Name extends React.Component {
 
 
 
-export class Message extends React.Component {
+export class MessageSend extends React.Component {
+
+    render () {
+
+        return (
+            <div>
+
+            </div>
+        )
+    }
+}
+
+export class MessageRec extends React.Component {
 
     render () {
 
@@ -36,7 +48,7 @@ export class MessagesPage extends React.Component {
     render () {
 
         return (
-            <div>
+            <div className="message-page-container">
                 <TitleMenu title="Messages" />
                 <div className="message-grid-container">
                     <div className="message-grid">

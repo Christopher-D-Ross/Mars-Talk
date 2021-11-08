@@ -9,6 +9,11 @@ export class LandingPage extends React.Component {
         };
     }
 
+    playAudio() {
+        let robo = new Audio("synthesize.mp3");
+        robo.play();
+    }
+
     modalOpen() {
         document.getElementById("modal").style.display = "flex";
     }
@@ -19,16 +24,17 @@ export class LandingPage extends React.Component {
 
     render () {
 
+
         return (
             <div className="land-container">
-                <div className="topgrid">
+                <div className="topgrid" onMouseEnter={this.playAudio}>
                     <div className="titlebox">
                         <div className="landtitle">
                             <h1>Mars<span className="talk">talk</span></h1>
                         </div>
                         <div className="buttons">
                             <div>
-                                <button className="create">Create Account</button>
+                                <button className="create" onClick={this.playAudio}>Create Account</button>
                             </div>
                             <div>
                                 <button className="signin" id="signin" onClick={this.modalOpen}>Sign In</button>
@@ -44,7 +50,7 @@ export class LandingPage extends React.Component {
                         <img src="satellite.jpeg" alt="satellite"/>
                     </div>
                     <div className="keyboardbox">
-                        <img src="keyboard.jpeg" alt="keyboard"/>
+                        <img src="glowmac.jpg" alt="keyboard"/>
                     </div>
                     <div className="descriptionbox">
                         <h2>Space Communication</h2>

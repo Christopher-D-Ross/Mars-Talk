@@ -5,6 +5,13 @@
     --main-grey: rgba(119, 136, 153, .80);
 }
 
+.message-page-container {
+    height: 100vh;
+    background: url("mars-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .message-grid-container {
     display: flex;
     justify-content: center;
@@ -25,8 +32,11 @@
 }
 
 .messages-box {
-    background: linear-gradient(to bottom right, var(--main-grey), black);
+    /* background: linear-gradient(to bottom right, var(--main-grey), black); */
+    background: url("grey-rock-back.jpg");
+    opacity: .80;
     border-radius: 10px;
+    color:rgb(194, 94, 47);
 }
 
 .direct-box {
@@ -60,4 +70,18 @@
     align-items: center;
     background: linear-gradient(to bottom right, var(--main-grey), black);
     border-radius: 10px;
+}
+
+.messages-box {
+    opacity: 0;
+    animation: fadein;
+    animation-delay: 3s;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadein {
+    0%   {opacity: 0}
+    100% {opacity: .80}
 }

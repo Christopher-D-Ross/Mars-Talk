@@ -10,9 +10,9 @@ export default function Dashboard() {
             </div>
             <div style={{display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column"}}>
                 <div style={{display: "flex", gap:"40px"}}>
-                    <Dashblock text="# of Contacts" number="20" phrase="Folks!" />
-                    <Dashblock text="# of Sent Messages" number="100" phrase="Talkins!" />
-                    <Dashblock text="# of Groups" number="5" phrase="Clicks!" />
+                    <Dashblock text="# of Contacts" number="20" phrase="" />
+                    <Dashblock text="# of Sent Messages" number="100" phrase="" />
+                    <Dashblock text="# of Groups" number="5" phrase="" />
                 </div>
             </div>
         </div>

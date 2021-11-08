@@ -11,13 +11,13 @@ export class TitleMenu extends React.Component {
                 </div>
                 <div className="iconbox">
                 <Link to={'/dashboard'}>
-                    <img src="rover.png" alt="rover" title="Dashboard"/>
+                    <img src="red-rover.png" alt="rover" title="Dashboard"/>
                 </Link>
                 <Link to={'/contacts'}>  
-                    <img src="astro.png" alt="astronaut" title="Contacts"/>
+                    <img src="astro-rocket.png" alt="astronaut" title="Contacts"/>
                 </Link>
                 <Link to={'/messages'}> 
-                    <img src="satellite.png" alt="satellite" title="Messages"/>
+                    <img src="satell.png" alt="satellite" title="Messages"/>
                 </Link>
                 </div>
             </div>

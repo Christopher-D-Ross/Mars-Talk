@@ -11,13 +11,17 @@
   margin: 0;
   padding: 0;
   --mars-orange: rgb(194, 94, 47);
-  --main-grey: rgba(119, 136, 153, .80);
+  --main-grey: rgba(119, 136, 153, .40);
 }
 
 .land-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
+  background: url("mars-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .titlebox {
@@ -25,7 +29,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  background: linear-gradient(to bottom right, var(--main-grey), rgb(68, 66, 66));
+  /* background: linear-gradient(to bottom right, var(--main-grey), rgb(68, 66, 66)); */
+  border: 5px dashed var(--mars-orange);
   border-radius: 10px;
 }
 
@@ -52,9 +57,9 @@
 }
 
 .buttons button {
-  height: 65px;
-  width: 200px;
-  font-size: 30px;
+  height: 2.2em;
+  width: 9em;
+  font-size: 1.2em;
   margin: 5px;
   cursor: pointer;
 }
@@ -99,16 +104,18 @@
 
 .keyboardbox {
   border-radius: 10px;
-  border: 10px dashed black;
+  border: 5px dashed black;
 }
 
 .keyboardbox img {
   height: 300px;
-  width: 400px;
+  width: 480px;
+  border-radius: 10px;
+  opacity: .65;
 }
 
 .descriptionbox {
-  background: linear-gradient(to bottom right, var(--mars-orange), rgb(68, 66, 66));
+  background: linear-gradient(to bottom right, rgba(194, 94, 47, .65), rgb(68, 66, 66));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -194,4 +201,44 @@ img {
   cursor: pointer;
   color: white;
   font-weight: 900;
+}
+
+.topgrid {
+  position: relative;
+  animation: topdown;
+  animation-duration: 3.5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes topdown {
+  0%   {top: -500px}
+  100% {top: 0px}
+}
+
+.bottomgrid {
+  position: relative;
+  animation: bottomside;
+  animation-duration: 3.5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes bottomside {
+  0%   {right: -1400px}
+  100% {right: 0px}
+}
+
+.buttons button {
+  opacity: 0;
+  animation: dissa;
+  animation-delay: 3.7s;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes dissa {
+  0%   {opacity: 0}
+  100% {opacity: 1}
 }
