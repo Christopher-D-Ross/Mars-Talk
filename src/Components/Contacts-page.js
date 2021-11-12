@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { TitleMenu } from './Title-Menu';
+import { setDoc, doc } from "firebase/firestore";
+import { db, app } from "../App";
 
 
 export class Contact extends React.Component {
@@ -20,8 +22,23 @@ export class Contact extends React.Component {
     }
 }
 
-export class ContactPage extends React.Component {
+// const contactSnap = getDocs(collection(db, "contacts"));
 
+
+export class ContactPage extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            fullName: "",
+            phoneNumber: "",
+            date: new Date()
+        }
+
+        this._updateFullName = this._updateFullName.bind(this);
+        this._updatePhoneNumber = this._updatePhoneNumber.bind(this);
+        this._addContact = this._addContact.bind(this);
+    }
 
     modalOpen() {
         document.getElementById("contact-modal").style.display = "flex";
@@ -55,17 +72,20 @@ export class ContactPage extends React.Component {
                             <h2>Enter Name</h2>
                         </div>
                         <div>
-                            <input type="text"></input>
+                            <input id="contact-name" type="text" value={this.state.fullName} onChange={this._updateFullName}></input>
                         </div>
                         <div>
                             <h2>Enter Phone Number</h2>
                         </div>
                         <div>
-                            <input type="text"></input>
+                            <input id="phone-number" type="text" value={this.state.phoneNumber} onChange={this._updatePhoneNumber}></input>
                         </div>
                         <div>
                             <Link to={'/contacts'}>
-                                <button onClick={this.theClosing}>Add Contact</button>
+                                <button onClick={() => {
+                                    this._addContact();
+                                    this.theClosing();
+                                }}>Add Contact</button>
                             </Link>
                         </div>
                     </div>
@@ -73,4 +93,26 @@ export class ContactPage extends React.Component {
             </div>
         )
     }
+
+    _updateFullName(event) {
+        this.setState({fullName: event.target.value})
+    }
+
+    _updatePhoneNumber(event) {
+        this.setState({phoneNumber: event.target.value})
+    }
+
+    _addContact() {
+        setDoc(doc(this.props.db, "contacts", this.state.fullName),{
+            fullName: this.state.fullName,
+            phoneNumber: this.state.phoneNumber,
+            date: new Date().toLocaleDateString()
+        });
+
+        this.setState({
+            fullName: "",
+            phoneNumber: ""
+        })
+    }
+
 }

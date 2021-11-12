@@ -2,12 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export class LandingPage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            signing: false
-        };
-    }
 
     playAudio() {
         let robo = new Audio("synthesize.mp3");
