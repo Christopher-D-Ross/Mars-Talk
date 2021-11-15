@@ -31,6 +31,10 @@
     width: 50em;
 }
 
+#dm-title h1 {
+    margin: 5px;
+}
+
 .messages-box {
     display: flex;
     flex-direction: column;
@@ -39,6 +43,7 @@
     opacity: .80;
     border-radius: 10px;
     color:rgb(194, 94, 47);
+    box-shadow: -10px 10px rgba(0, 0, 0, .30);
 }
 
 .direct-box {
@@ -47,9 +52,15 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background: linear-gradient(to bottom right, var(--mars-orange), rgb(68, 66, 66));
+    /* background: linear-gradient(to bottom right, var(--mars-orange), rgb(68, 66, 66)); */
+    background: url("dash-back.jpg");
     border-radius: 10px;
     margin-bottom: 1em;
+    box-shadow: -10px 10px rgba(0, 0, 0, .30);
+}
+
+.direct-box h1 {
+    color: rgba(0, 0, 0, .70);
 }
 
 .group-box {
@@ -58,8 +69,14 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background: linear-gradient(to bottom right, var(--mars-orange), rgb(68, 66, 66));
+    /* background: linear-gradient(to bottom right, var(--mars-orange), rgb(68, 66, 66)); */
+    background: url("dash-back.jpg");
     border-radius: 10px;
+    box-shadow: -10px 10px rgba(0, 0, 0, .30);
+}
+
+.group-box h1 {
+    color: rgba(0, 0, 0, .70);
 }
 
 .name-box {
@@ -70,8 +87,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom right, var(--main-grey), black);
+    /* background: linear-gradient(to bottom right, var(--main-grey), black); */
+    background: url("moon-back.jpg");
+    background-size: cover;
     border-radius: 10px;
+    color: rgba(255, 255, 255, .60);
 }
 
 .message-input {
@@ -106,6 +126,11 @@
     margin-right: 60px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, .60);
+    cursor: pointer;
+}
+
+.message-input button:hover {
+    background-color: rgb(131, 86, 131);
 }
 
 .add-icon {
@@ -161,4 +186,37 @@
 @keyframes fadein {
     0%   {opacity: 0}
     100% {opacity: .80}
+}
+
+.direct-box {
+    position: relative;
+    animation: dirangle;
+    animation-timing-function: ease-in-out;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes dirangle {
+    0%   {bottom: 500px;
+         left: 1300px}
+
+    100% {bottom: 0px;
+         left: 0px}
+}
+
+
+.group-box {
+    position: relative;
+    animation: grangle;
+    animation-timing-function: ease-in-out;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes grangle {
+    0%   {top: 500px;
+         left: 1300px}
+
+    100% {top: 0px;
+         left: 0px}
 }

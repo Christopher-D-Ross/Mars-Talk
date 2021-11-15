@@ -10,12 +10,12 @@ export class Contact extends React.Component {
 
         return (
             <div className="contact-container">
-                <div className="info">
+                <div className="info" style={{boxShadow:"-10px 10px rgba(0, 0, 0, .60)"}}>
                     <div>{this.props.name}</div>
                     <div>{this.props.number}*{this.props.date}</div>
                 </div>
                 <div className="message-button">
-                    <button>Message</button>
+                    <button style={{boxShadow:"-10px 10px rgba(0, 0, 0, .60)"}}>Message</button>
                 </div>
             </div>
         )
@@ -55,13 +55,15 @@ export class ContactPage extends React.Component {
             <div className="contact-page-container">
                 <div>
                     <TitleMenu title="Contacts"/>
-                    <div className="add-contact-box">
-                        <button onClick={this.modalOpen}>Add Contact</button>
+                    <div className="contact-holder">
+                        <div className="add-contact-box">
+                            <button onClick={this.modalOpen}>Add Contact</button>
+                        </div>
+                        <Contact name="Dusty Rover" number="222-666-7777" date="11-4-21" />
+                        <Contact name="Space Junkie" number="333-565-8998" date="11-4-21" />
+                        <Contact name="Neil Degrasse Tyson" number="100-200-3400" date="11-4-21" />
+                        <Contact name="Team 4" number="444-444-4444" date="11-4-21" />
                     </div>
-                    <Contact name="Dusty Rover" number="222-666-7777" date="11-4-21" />
-                    <Contact name="Space Junkie" number="333-565-8998" date="11-4-21" />
-                    <Contact name="Neil Degrasse Tyson" number="100-200-3400" date="11-4-21" />
-                    <Contact name="Team 4" number="444-444-4444" date="11-4-21" />
                 </div>
                 <div className="contact-modal" id="contact-modal">
                     <div className="contact-modal-box">

@@ -1,6 +1,6 @@
 import React from "react";
 import { TitleMenu } from "./Title-Menu";
-import { setDoc, doc, collection, query, getDoc } from "firebase/firestore";
+import { setDoc, doc, collection, query, getDocs } from "firebase/firestore";
 import { db } from "../App";
 
 
@@ -23,8 +23,9 @@ export class Message extends React.Component {
     render () {
 
         return (
-            <div>
-
+            <div style={{margin:"10px"}}>
+                <p>{this.props.date}-{this.props.time}</p>
+                <h4 style={{color:"red"}}>{this.props.message}</h4>
             </div>
         )
     }
@@ -54,38 +55,31 @@ export class MessagesPage extends React.Component {
             message: "",
             date: new Date(),
             group: "",
-            messages: null
+            messages: []
         }
 
         this._updateMessage = this._updateMessage.bind(this);
         this._addMessage = this._addMessage.bind(this);
         this._updateGroup = this._updateGroup.bind(this);
         this._addGroup = this._addGroup.bind(this);
+        this._getMessages = this._getMessages.bind(this);
     }
 
-    // Retrieval Practice
-    // componentDidMount() {
-    //     const q = query(collection(this.props.data, "messages"));
-    //     getDoc(q).then(snapshot => {
-    //         snapshot.forEach(doc => {
-    //             console.log(doc.data())
-    //         });
-    //     })
-    //     // console.log("mounted")
-    //     // db.collection("Messages")
-    //     //   .get()
-    //     //   .then( snapshot => {
-    //     //       const messages = []
-    //     //       snapshot.forEach( doc => {
-    //     //           const data = doc.data()
-    //     //           messages.push(data)
-    //     //       })
-    //     //       this.setState({messages: messages})
-    //     //       console.log(snapshot)
-    //     //   })
-    //     //   .catch( error => console.log(error))
-    // }
+    componentDidMount() {
+        const q = query(collection(this.props.data,"Messages"));
+        getDocs(q).then((querySnapshot) => {
+          this._getMessages(querySnapshot)
+        })
+      }
 
+    _getMessages(querySnapshot) {
+    let messagesData = [];
+    querySnapshot.forEach((document) => {
+        messagesData.push(document.data());
+    });
+    console.log(messagesData);
+    this.setState({messages: messagesData});
+    }
 
 
     inputAppear() {
@@ -142,10 +136,15 @@ export class MessagesPage extends React.Component {
                             <div id="dm-title">
                                 <h1>Messages</h1>
                             </div>
-                                <div className="message-input">
-                                    <input type="text" placeholder="Write message, press enter" value={this.state.message} onChange={this._updateMessage}></input>
-                                    <button onClick={this._addMessage}>Send</button>
-                                </div>
+                            <div>
+                                {this.state.messages.map((message) => <Message message={message.message} date={message.date} time={message.time}/>)}
+                            </div>
+                            <div className="message-input">
+                                <input type="text" placeholder="Type Your Message, Click Submit" value={this.state.message} onChange={this._updateMessage}></input>
+                                <button onClick={() => {
+                                    this._addMessage();
+                                }}>Send</button>
+                            </div>
                         </div>
                     </div>
                 </div>

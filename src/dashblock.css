@@ -16,6 +16,7 @@
     /* background: linear-gradient(to bottom right, var(--mars-orange), rgb(48, 46, 46)); */
     background: url("dash-back.jpg");
     border-radius: 10px;
+    box-shadow: -27px 29px rgba(0, 0, 0, .30);
 }
 
 .dashtext {
