@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { TitleMenu } from './Title-Menu';
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc, collection, query, getDocs } from "firebase/firestore";
 import { db, app } from "../App";
 
 
@@ -32,12 +32,30 @@ export class ContactPage extends React.Component {
         this.state = {
             fullName: "",
             phoneNumber: "",
-            date: new Date()
+            date: new Date(),
+            contacts: []
         }
 
         this._updateFullName = this._updateFullName.bind(this);
         this._updatePhoneNumber = this._updatePhoneNumber.bind(this);
         this._addContact = this._addContact.bind(this);
+        this._getContacts = this._getContacts.bind(this);
+    }
+
+    componentDidMount() {
+        const q = query(collection(this.props.db,"contacts"));
+        getDocs(q).then((querySnapshot) => {
+          this._getContacts(querySnapshot)
+        })
+      }
+
+    _getContacts(querySnapshot) {
+    let contactsData = [];
+    querySnapshot.forEach((document) => {
+        contactsData.push(document.data());
+    });
+    console.log(contactsData);
+    this.setState({contacts: contactsData});
     }
 
     modalOpen() {
@@ -59,10 +77,13 @@ export class ContactPage extends React.Component {
                         <div className="add-contact-box">
                             <button onClick={this.modalOpen}>Add Contact</button>
                         </div>
-                        <Contact name="Dusty Rover" number="222-666-7777" date="11-4-21" />
+                        <div className="contact-renders">
+                        {this.state.contacts.map((contact) => <Contact name={contact.fullName} date={contact.date} number={contact.phoneNumber}/>)}
+                        </div>
+                        {/* <Contact name="Dusty Rover" number="222-666-7777" date="11-4-21" />
                         <Contact name="Space Junkie" number="333-565-8998" date="11-4-21" />
                         <Contact name="Neil Degrasse Tyson" number="100-200-3400" date="11-4-21" />
-                        <Contact name="Team 4" number="444-444-4444" date="11-4-21" />
+                        <Contact name="Team 4" number="444-444-4444" date="11-4-21" /> */}
                     </div>
                 </div>
                 <div className="contact-modal" id="contact-modal">

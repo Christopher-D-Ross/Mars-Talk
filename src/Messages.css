@@ -44,6 +44,7 @@
     border-radius: 10px;
     color:rgb(194, 94, 47);
     box-shadow: -10px 10px rgba(0, 0, 0, .30);
+    overflow: scroll;
 }
 
 .direct-box {
@@ -219,4 +220,26 @@
 
     100% {top: 0px;
          left: 0px}
+}
+
+/* Message Component */
+
+.message-container {
+    margin: 0px 10px 20px 10px;
+    width: fit-content;
+    height: fit-content;
+    border-top: 2px solid rgba(131, 86, 131, .80);
+    border-bottom: 2px solid rgba(255, 255, 255, .60);
+}
+
+.message-container p {
+    color:rgba(255, 255, 255, .60)
+}
+
+.messages-in {
+    overflow: scroll;
+}
+
+.message-container h4 {
+
 }

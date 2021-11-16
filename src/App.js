@@ -6,7 +6,7 @@ import './Contact.css';
 import './Messages.css';
 import { LandingPage } from './Components/Landing';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Dashboard from "./Components/Dashboard";
+import { Dashboard } from "./Components/Dashboard";
 import { ContactPage } from "./Components/Contacts-page";
 import { MessagesPage } from "./Components/Messages";
 import { getFirestore, collection, getDocs, setDoc, doc } from 'firebase/firestore';
@@ -37,7 +37,7 @@ function App() {
             <LandingPage />
           </Route>
           <Route exact path="/dashboard">
-            <Dashboard />
+            <Dashboard db={db}/>
           </Route>
           <Route exact path="/contacts">
             <ContactPage db={db} />

@@ -23,29 +23,13 @@ export class Message extends React.Component {
     render () {
 
         return (
-            <div style={{margin:"10px"}}>
+            <div className="message-container" >
                 <p>{this.props.date}-{this.props.time}</p>
-                <h4 style={{color:"red"}}>{this.props.message}</h4>
+                <h4>{this.props.message}</h4>
             </div>
         )
     }
 }
-
-export class MessageInput extends React.Component {
-
-    render () {
-
-        return (
-            <div className="message-input">
-                <input type="text">{this.state.message}</input>
-            </div>
-        )
-
-
-    }
-}
-
-
 
 export class MessagesPage extends React.Component {
     constructor(props) {
@@ -110,6 +94,9 @@ export class MessagesPage extends React.Component {
                         <div className="names-box">
                             <div className="direct-box">
                                 <h1>Direct Messages</h1>
+                                <div>
+                                    
+                                </div>
                                 <Name name="Neil" />
                                 <Name name="Team 4" />
                                 <Name name="Kalel" />
@@ -136,11 +123,11 @@ export class MessagesPage extends React.Component {
                             <div id="dm-title">
                                 <h1>Messages</h1>
                             </div>
-                            <div>
+                            <div className="messages-in">
                                 {this.state.messages.map((message) => <Message message={message.message} date={message.date} time={message.time}/>)}
                             </div>
                             <div className="message-input">
-                                <input type="text" placeholder="Type Your Message, Click Submit" value={this.state.message} onChange={this._updateMessage}></input>
+                                <input type="text" placeholder="Type Your Message, Click Send" value={this.state.message} onChange={this._updateMessage}></input>
                                 <button onClick={() => {
                                     this._addMessage();
                                 }}>Send</button>
