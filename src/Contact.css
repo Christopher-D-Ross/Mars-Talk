@@ -78,7 +78,7 @@
 }
 
 .contact-modal {
-    height: 105vh;
+    height: 100.75vh;
     width: 1440px;
     display: flex;
     flex-direction: column;
@@ -86,7 +86,7 @@
     align-items: center;
     background-color: rgba(0, 0, 0, .60);
     position: relative;
-    bottom: 710px;
+    bottom: 732px;
     display: none;
 }
 

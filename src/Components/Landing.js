@@ -1,7 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { signUp } from "../App";
 
 export class LandingPage extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            email: "",
+            password: "",
+            loading: false
+        }
+
+        this.updateEmail = this.updateEmail.bind(this);
+        this.updatePassword = this.updatePassword.bind(this);
+        this.handleSignUp = this.handleSignUp.bind(this);
+    }
 
     playAudio() {
         let robo = new Audio("synthesize.mp3");
@@ -14,6 +28,16 @@ export class LandingPage extends React.Component {
 
     theClosing() {
         document.getElementById("modal").style.display = "none";
+    }
+
+    async handleSignUp() {
+        this.setState({loading: true});
+        try {
+            await signUp(document.getElementById("email").value, document.getElementById("password").value);
+        } catch {
+            // alert("Error!")
+        }
+        this.setState({loading: false});
     }
 
     render () {
@@ -57,15 +81,26 @@ export class LandingPage extends React.Component {
                         <span className="closer" onClick={this.theClosing}>X</span>
                         </div>
                         <h2>Email</h2>
-                        <input type="email"></input>
+                        <input id="email" value={this.state.email} onChange={this.updateEmail} type="email"></input>
                         <h2>Password</h2>
-                        <input type="password"></input>
+                        <input id="password" value={this.state.password} onChange={this.updatePassword} type="password"></input>
                         <Link to={'/dashboard'}>
-                            <button>Sign-In</button>
+                            <button disabled={this.state.loading} onClick={this.handleSignUp} >Sign-In</button>
                         </Link>
                     </div>
                 </div>
             </div>
         )
     }
+
+    updateEmail(event) {
+        this.setState({email: event.target.value})
+    }
+
+    updatePassword(event) {
+        this.setState({password: event.target.value})
+    }
 }
+
+
+//Notes about button for authentication <button disabled={this.state.loading} onClick={this.handleSignUp}>Sign-In</button>

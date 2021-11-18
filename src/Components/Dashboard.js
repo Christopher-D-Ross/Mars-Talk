@@ -1,7 +1,7 @@
 import React from "react";
 import { Dashblock } from "./Dashblocks";
 import { TitleMenu } from "./Title-Menu";
-import { setDoc, doc, collection, query, getDocs } from "firebase/firestore";
+import { collection, query, getDocs } from "firebase/firestore";
 
 export class Dashboard extends React.Component {
     constructor(props) {
@@ -10,7 +10,8 @@ export class Dashboard extends React.Component {
         this.state = {
             contacts: [],
             messages: [],
-            groups: []
+            groups: [],
+            loading: true
         }
         this._getContacts = this._getContacts.bind(this);
         // this._getMessages = this._getMessages.bind(this);
@@ -24,12 +25,12 @@ export class Dashboard extends React.Component {
         })
       }
 
-    // componentDidMount() {
-    //     const q2 = query(collection(this.props.db,"Messages"));
-    //     getDocs(q2).then((querySnapshot) => {
-    //         this._getMessages(querySnapshot)
-    //     })
-    // }
+    messagesDidMount() {
+        const q2 = query(collection(this.props.db,"Messages"));
+        getDocs(q2).then((querySnapshot) => {
+            this._getMessages(querySnapshot)
+        })
+    }
 
     _getContacts(querySnapshot) {
         let contactsData = [];
@@ -41,14 +42,14 @@ export class Dashboard extends React.Component {
     }
 
 
-    // _getMessages(querySnapshot) {
-    //     let messagesData = [];
-    //     querySnapshot.forEach((document) => {
-    //         messagesData.push(document.data());
-    //     });
-    //     console.log(messagesData);
-    //     this.setState({messages: messagesData});
-    // }
+    _getMessages(querySnapshot) {
+        let messagesData = [];
+        querySnapshot.forEach((document) => {
+            messagesData.push(document.data());
+        });
+        console.log(messagesData);
+        this.setState({messages: messagesData});
+    }
 
 
     render () {

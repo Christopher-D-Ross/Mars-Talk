@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { TitleMenu } from './Title-Menu';
-import { setDoc, doc, collection, query, getDocs } from "firebase/firestore";
-import { db, app } from "../App";
+import { setDoc, doc, collection, query, getDocs, addDoc } from "firebase/firestore";
 
 
 export class Contact extends React.Component {
@@ -78,7 +77,7 @@ export class ContactPage extends React.Component {
                             <button onClick={this.modalOpen}>Add Contact</button>
                         </div>
                         <div className="contact-renders">
-                        {this.state.contacts.map((contact) => <Contact name={contact.fullName} date={contact.date} number={contact.phoneNumber}/>)}
+                        {this.state.contacts.map((contact) => <Contact name={contact.fullName} date={contact.date} number={contact.phoneNumber} key={contact.phoneNumber}/>)}
                         </div>
                         {/* <Contact name="Dusty Rover" number="222-666-7777" date="11-4-21" />
                         <Contact name="Space Junkie" number="333-565-8998" date="11-4-21" />
@@ -104,7 +103,7 @@ export class ContactPage extends React.Component {
                             <input id="phone-number" type="text" value={this.state.phoneNumber} onChange={this._updatePhoneNumber}></input>
                         </div>
                         <div>
-                            <Link to={'/contacts'}>
+                            <Link to={'/contacts'}>``
                                 <button onClick={() => {
                                     this._addContact();
                                     this.theClosing();
@@ -126,11 +125,9 @@ export class ContactPage extends React.Component {
     }
 
     _addContact() {
-        setDoc(doc(this.props.db, "contacts", this.state.fullName),{
-            fullName: this.state.fullName,
-            phoneNumber: this.state.phoneNumber,
-            date: new Date().toLocaleDateString()
-        });
+        const collectionRef = collection(this.props.db, "contacts");
+        const payload = { fullName: this.state.fullName, phoneNumber: this.state.phoneNumber, date: new Date().toLocaleDateString() };
+        addDoc(collectionRef, payload)
 
         this.setState({
             fullName: "",
@@ -139,3 +136,28 @@ export class ContactPage extends React.Component {
     }
 
 }
+
+// _addMessage() {
+//     const collectionRef = collection(this.props.data, "Messages");
+//     const payload = { message: this.state.message, date: this.state.date.toLocaleDateString(), time: new Date().toLocaleTimeString() };
+//     addDoc(collectionRef, payload)
+//     this.setState({
+//         message: ""
+//     })
+// }
+
+
+// _addContact() {
+//     const collectionRef = collection(this.props.db, "contacts");
+//     const payload = { message: this.state.fullName, phoneNumber: this.state.phoneNumber, date: new Date().toLocaleDateString() };
+//     setDoc(doc(this.props.db, "contacts"),{
+//         fullName: this.state.fullName,
+//         phoneNumber: this.state.phoneNumber,
+//         date: new Date().toLocaleDateString()
+//     });
+
+//     this.setState({
+//         fullName: "",
+//         phoneNumber: ""
+//     })
+// }

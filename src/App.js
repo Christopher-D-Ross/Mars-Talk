@@ -9,8 +9,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Dashboard } from "./Components/Dashboard";
 import { ContactPage } from "./Components/Contacts-page";
 import { MessagesPage } from "./Components/Messages";
-import { getFirestore, collection, getDocs, setDoc, doc } from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore';
 import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 
 const firebaseConfig = {
@@ -26,6 +27,11 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+const auth = getAuth();
+
+export function signUp(email, password) {
+  return createUserWithEmailAndPassword(auth, email, password);
+}
 
 
 function App() {

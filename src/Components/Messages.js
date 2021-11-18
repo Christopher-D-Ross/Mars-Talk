@@ -1,7 +1,6 @@
 import React from "react";
 import { TitleMenu } from "./Title-Menu";
-import { setDoc, doc, collection, query, getDocs } from "firebase/firestore";
-import { db } from "../App";
+import { setDoc, doc, collection, query, getDocs, addDoc } from "firebase/firestore";
 
 
 export class Name extends React.Component {
@@ -54,15 +53,18 @@ export class MessagesPage extends React.Component {
         getDocs(q).then((querySnapshot) => {
           this._getMessages(querySnapshot)
         })
-      }
+    }
+
 
     _getMessages(querySnapshot) {
-    let messagesData = [];
-    querySnapshot.forEach((document) => {
+        setInterval(() => {
+            let messagesData = [];
+        querySnapshot.forEach((document) => {
         messagesData.push(document.data());
     });
     console.log(messagesData);
     this.setState({messages: messagesData});
+        }, 1200);
     }
 
 
@@ -151,12 +153,9 @@ export class MessagesPage extends React.Component {
     }
    
     _addMessage() {
-        setDoc(doc(this.props.data, "Messages", "User6"),{
-            message: this.state.message,
-            date: this.state.date.toLocaleDateString(),
-            time: new Date().toLocaleTimeString()
-        });
-
+        const collectionRef = collection(this.props.data, "Messages");
+        const payload = { message: this.state.message, date: this.state.date.toLocaleDateString(), time: new Date().toLocaleTimeString() };
+        addDoc(collectionRef, payload)
         this.setState({
             message: ""
         })
@@ -175,3 +174,20 @@ export class MessagesPage extends React.Component {
     }
 
 }
+
+
+
+
+// _addMessage() {
+//     const collectionRef = collection(this.props.data, "Messages");
+//     const payload = { message: this.state.message, date: this.state.date.toLocaleDateString(), time: new Date().toLocaleTimeString() };
+//     setDoc(doc(this.props.data, "Messages", "Frskn"),{
+//         message: this.state.message,
+//         date: this.state.date.toLocaleDateString(),
+//         time: new Date().toLocaleTimeString()
+//     });
+
+//     this.setState({
+//         message: ""
+//     })
+// }

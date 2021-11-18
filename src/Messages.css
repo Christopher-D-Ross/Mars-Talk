@@ -230,6 +230,7 @@
     height: fit-content;
     border-top: 2px solid rgba(131, 86, 131, .80);
     border-bottom: 2px solid rgba(255, 255, 255, .60);
+    font-size: 1.3em;
 }
 
 .message-container p {
@@ -238,8 +239,4 @@
 
 .messages-in {
     overflow: scroll;
-}
-
-.message-container h4 {
-
 }
