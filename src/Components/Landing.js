@@ -34,8 +34,9 @@ export class LandingPage extends React.Component {
         this.setState({loading: true});
         try {
             await signUp(document.getElementById("email").value, document.getElementById("password").value);
+            alert(`${this.state.email} is logged in.`)
         } catch {
-            // alert("Error!")
+            alert("You were already signed in!!")
         }
         this.setState({loading: false});
     }

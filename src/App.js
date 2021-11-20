@@ -12,6 +12,7 @@ import { MessagesPage } from "./Components/Messages";
 import { getFirestore } from 'firebase/firestore';
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+// const client = require('twilio');
 
 
 const firebaseConfig = {
@@ -32,6 +33,21 @@ const auth = getAuth();
 export function signUp(email, password) {
   return createUserWithEmailAndPassword(auth, email, password);
 }
+
+// const accountSid = process.env.TWILIO_ACCOUNT_SID;
+// const authToken = process.env.TWILIO_AUTH_TOKEN;
+
+// const accountSid = 'AC86fab9cd438753065cf5134c821d9e09'; 
+// const authToken = '1f70886a9a36fbe945f76a45f4d2b0e7'; 
+
+// client.messages 
+//       .create({ 
+//          body: 'This is Mars Talk',  
+//          messagingServiceSid: 'MG151d4f5417cf20f600e0e17ff2d67944',      
+//          to: '+14049379860' 
+//        }) 
+//       .then(message => console.log(message.sid)) 
+//       .done();
 
 
 function App() {

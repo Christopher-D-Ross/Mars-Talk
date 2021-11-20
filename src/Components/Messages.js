@@ -1,6 +1,6 @@
 import React from "react";
 import { TitleMenu } from "./Title-Menu";
-import { setDoc, doc, collection, query, getDocs, addDoc } from "firebase/firestore";
+import { setDoc, doc, collection, query, getDocs, addDoc, orderBy } from "firebase/firestore";
 
 
 export class Name extends React.Component {
@@ -38,6 +38,7 @@ export class MessagesPage extends React.Component {
             message: "",
             date: new Date(),
             group: "",
+            groups: [],
             messages: []
         }
 
@@ -46,26 +47,26 @@ export class MessagesPage extends React.Component {
         this._updateGroup = this._updateGroup.bind(this);
         this._addGroup = this._addGroup.bind(this);
         this._getMessages = this._getMessages.bind(this);
+        this._showAlert = this._showAlert.bind(this);
+        this._inputCloseOut = this._inputCloseOut.bind(this);
     }
 
     componentDidMount() {
-        const q = query(collection(this.props.data,"Messages"));
+        const q = query(collection(this.props.data,"Messages"), orderBy("date"));
         getDocs(q).then((querySnapshot) => {
           this._getMessages(querySnapshot)
         })
     }
 
-
     _getMessages(querySnapshot) {
-        setInterval(() => {
-            let messagesData = [];
+        let messagesData = [];
         querySnapshot.forEach((document) => {
         messagesData.push(document.data());
     });
     console.log(messagesData);
     this.setState({messages: messagesData});
-        }, 1200);
-    }
+    };
+    
 
 
     inputAppear() {
@@ -85,7 +86,6 @@ export class MessagesPage extends React.Component {
         document.getElementById("group-x").style.display = "none";
     }
 
-
     render () {
 
         return (
@@ -100,7 +100,7 @@ export class MessagesPage extends React.Component {
                                     
                                 </div>
                                 <Name name="Neil" />
-                                <Name name="Team 4" />
+                                <Name name="Kratos" />
                                 <Name name="Kalel" />
                             </div>
                             <div className="group-box">
@@ -132,6 +132,7 @@ export class MessagesPage extends React.Component {
                                 <input type="text" placeholder="Type Your Message, Click Send" value={this.state.message} onChange={this._updateMessage}></input>
                                 <button onClick={() => {
                                     this._addMessage();
+                                    this.componentDidMount();
                                 }}>Send</button>
                             </div>
                         </div>
@@ -164,12 +165,21 @@ export class MessagesPage extends React.Component {
     _addGroup(event) {
         if(event.key === 'Enter') {
             setDoc(doc(this.props.data, "Group", this.state.group),{
-                group: `#${this.state.group}`
+                group: `#${this.state.group}`,
+                groupMembers: []
             });
+            alert(`You added ${this.state.group} to your groups!`);
     
             this.setState({
                 group: ""
             })
+        }
+    }
+
+    _showAlert(event) {
+        if(event.key === 'Enter') {
+            alert(`You added ${this.state.group} to your groups!`);
+            console.log(`You added ${this.state.group} to your groups!`)
         }
     }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { TitleMenu } from './Title-Menu';
-import { setDoc, doc, collection, query, getDocs, addDoc } from "firebase/firestore";
+import { collection, query, getDocs, addDoc, orderBy } from "firebase/firestore";
 
 
 export class Contact extends React.Component {
@@ -14,7 +14,9 @@ export class Contact extends React.Component {
                     <div>{this.props.number}*{this.props.date}</div>
                 </div>
                 <div className="message-button">
-                    <button style={{boxShadow:"-10px 10px rgba(0, 0, 0, .60)"}}>Message</button>
+                    <Link to={'/messages'}>
+                        <button style={{boxShadow:"-10px 10px rgba(0, 0, 0, .60)"}}>Message</button>
+                    </Link>
                 </div>
             </div>
         )
@@ -42,7 +44,7 @@ export class ContactPage extends React.Component {
     }
 
     componentDidMount() {
-        const q = query(collection(this.props.db,"contacts"));
+        const q = query(collection(this.props.db,"contacts"), orderBy("fullName"));
         getDocs(q).then((querySnapshot) => {
           this._getContacts(querySnapshot)
         })
@@ -107,6 +109,7 @@ export class ContactPage extends React.Component {
                                 <button onClick={() => {
                                     this._addContact();
                                     this.theClosing();
+                                    this.componentDidMount();
                                 }}>Add Contact</button>
                             </Link>
                         </div>

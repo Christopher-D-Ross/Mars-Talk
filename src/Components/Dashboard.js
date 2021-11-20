@@ -14,7 +14,8 @@ export class Dashboard extends React.Component {
             loading: true
         }
         this._getContacts = this._getContacts.bind(this);
-        // this._getMessages = this._getMessages.bind(this);
+        this._getMessages = this._getMessages.bind(this);
+        this.messagesDidMount = this.messagesDidMount.bind(this);
 
     }
 
@@ -26,8 +27,8 @@ export class Dashboard extends React.Component {
       }
 
     messagesDidMount() {
-        const q2 = query(collection(this.props.db,"Messages"));
-        getDocs(q2).then((querySnapshot) => {
+        const q = query(collection(this.props.db,"Messages"));
+        getDocs(q).then((querySnapshot) => {
             this._getMessages(querySnapshot)
         })
     }
@@ -61,7 +62,7 @@ export class Dashboard extends React.Component {
                 <div style={{display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column"}}>
                     <div style={{display: "flex", gap:"40px"}}>
                         <Dashblock text="# of Contacts" number={this.state.contacts.length} phrase="" />
-                        <Dashblock text="# of Sent Messages" number={this.state.messages.length} phrase="" />
+                        <Dashblock text="# of Sent Messages" number="Private" phrase="" />
                         <Dashblock text="# of Groups" number="5" phrase="" />
                     </div>
                 </div>
